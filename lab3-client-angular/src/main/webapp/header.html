@@ -6,7 +6,7 @@
     border-color: green;
 }
 </style>
-<div class="container">
+<div class="container" ng-controller="TabController as tabCtrl">
     <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -14,13 +14,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-      <a class="navbar-brand" href="index.html">Lab III</a>
+      <a class="navbar-brand" href="index.html" ng-click="tabCtrl.setSelectedMenu(0)">Lab III</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-        <li><a href="autor-lista.html">Autor</a></li>
-        <li><a href="editora-lista.html">Editora</a></li>
-        <li><a href="livro-lista.html">Livro</a></li>
+        <li ng-class="{active : tabCtrl.isSelectedMenu(1)}"><a ng-click="tabCtrl.setSelectedMenu(1)" href="autor-lista.html">Autor</a></li>
+        <li ng-class="{active : tabCtrl.isSelectedMenu(2)}"><a ng-click="tabCtrl.setSelectedMenu(2)" href="editora-lista.html">Editora</a></li>
+        <li ng-class="{active : tabCtrl.isSelectedMenu(3)}"><a ng-click="tabCtrl.setSelectedMenu(3)" href="livro-lista.html">Livro</a></li>
       </ul>
     </nav>
 </div>

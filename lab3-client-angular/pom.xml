@@ -5,7 +5,7 @@
     <artifactId>lab3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>lab3-client-react</artifactId>
+  <artifactId>lab3-client-angular</artifactId>
   <packaging>war</packaging>
-  <name>Lab3-Client-ReactJS</name>
+  <name>Lab3-Client-AngularJS</name>
 </project>

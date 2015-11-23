@@ -1,38 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html ng-app="lab3-livro">
 <head>
-    <script th:replace="fragments/imports :: imports">&nbsp;</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/ngStorage.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/livro.js"></script>
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<div th:replace="fragments/header :: header">&nbsp;</div>
+<header ng-include="'header.html'" class="navbar navbar-inverse navbar-static-top" role="banner"></header>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h2>
-            Livro - Inclusão/Edição
+            Livro - Inclusão/Edição <small><a href="livro-lista.html">Listar</a></small>
         </h2>
     </div>
     <div class="panel-body">
-        <form action="#" data-th-action="@{/livro/save}" data-th-object="${livro}" method="post">
+        <form name="formLivro" ng-controller="LivroController as livroCtrl" ng-submit="formLivro.$valid && livroCtrl.save(livroCtrl.livro)" novalidate>
             <div class="col-md-6">
-                <input type="hidden" data-th-value="*{id}" data-th-field="*{id}"/>
+                <input type="hidden" ng-model="livroCtrl"/>
                 <div class="form-group">
                     <label>Titulo</label>
-                    <input required="required" type="text" class="form-control" data-th-value="*{titulo}" data-th-field="*{titulo}"/>
+                    <input required="required" type="text" class="form-control" ng-model="livroCtrl.livro.titulo"/>
                 </div>
                 <div class="form-group">
                     <label>ISBN</label>
-                    <input required="required" type="text" class="form-control" data-th-value="*{isbn}" data-th-field="*{isbn}"/>
+                    <input required="required" type="text" class="form-control" ng-model="livroCtrl.livro.isbn"/>
                 </div>
                  <div class="form-group">
                     <label>Autor</label>
-                    <select class="form-control" th:field="*{autor.id}">
-                        <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nome}"></option>
+                    <select ng-options="autor.id as autor.nome+' '+autor.sobrenome for autor in livroCtrl.autores" class="form-control" ng-model="livroCtrl.livro.autor.id">
+                        
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Editora</label>
-                    <select class="form-control" th:field="*{editora.id}">
-                        <option th:each="editora : ${editoras}" th:value="${editora.id}" th:text="${editora.nome}"></option>
+                    <select ng-options="editora.id as editora.nome for editora in livroCtrl.editoras" class="form-control" ng-model="livroCtrl.livro.editora.id">
+                        
                     </select>
                 </div>
                 <div class="form-group">

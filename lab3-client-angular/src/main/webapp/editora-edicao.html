@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html ng-app="lab3-editora">
 <head>
-    <script th:replace="fragments/imports :: imports">&nbsp;</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/ngStorage.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/editora.js"></script>
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<div th:replace="fragments/header :: header">&nbsp;</div>
+<header ng-include="'header.html'" class="navbar navbar-inverse navbar-static-top" role="banner"></header>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h2>
@@ -12,12 +22,12 @@
         </h2>
     </div>
     <div class="panel-body">
-        <form action="#" data-th-action="@{/editora/save}" data-th-object="${editora}" method="post">
+        <form name="formEditora" ng-controller="EditoraController as editoraCtrl" ng-submit="formEditora.$valid && editoraCtrl.save(editoraCtrl.editora)" novalidate>
             <div class="col-md-6">
-                <input type="hidden" data-th-value="*{id}" data-th-field="*{id}"/>
+                <input type="hidden" ng-model="editoraCtrl.editora.id"/>
                 <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" class="form-control" data-th-value="*{nome}" data-th-field="*{nome}"/>
+                    <input type="text" class="form-control" ng-model="editoraCtrl.editora.nome"/>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Salvar" class="btn btn-success" />
@@ -25,7 +35,7 @@
             </div>
         </form>
     </div>
-    <div th:replace="fragments/footer :: footer">&nbsp;</div>
+    <div ng-include="'footer.html'"></div>
 </div>
 </body>
 </html>
