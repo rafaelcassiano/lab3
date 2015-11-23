@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="lab3-autor">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/autor.js"></script>
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form name="formAutor" ng-controller="AutorController as autorCtrl" ng-submit="formAutor.$valid && autorCtrl.save(autorCtrl.autor)" novalidate>
+            <div class="col-md-6">
+                <input type="hidden" ng-model="autorCtrl.autor.id"/>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" ng-model="autorCtrl.autor.nome" required />
+                </div>
+                <div class="form-group">
+                    <label>Sobrenome</label>
+                    <input type="text" class="form-control" ng-model="autorCtrl.autor.sobrenome" required/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

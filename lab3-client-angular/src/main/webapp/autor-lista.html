@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="lab3-autor">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/autor.js"></script>
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<header ng-include="'header.html'" class="navbar navbar-inverse navbar-static-top" role="banner"></header>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>
+            Autor - Lista  <small><a href="autor-edicao.html">Incluir</a></small>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive" ng-controller="AutorController as autorCtrl">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Sobrenome</th>
+                  <th>Editar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="autor in autorCtrl.autores">
+                  <td>{{autor.nome}}</td>
+                  <td>{{autor.sobrenome}}</td>
+                  <td><a ng-click="autorCtrl.openForm(autor.id)">Editar</a></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+    <div ng-include="'footer.html'"></div>
+</div>
+<div id="formAutor" style="display:none" ng-include="autor-edicao.html">
+</div>
+</body>
+</html>

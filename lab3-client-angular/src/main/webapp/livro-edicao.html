@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script th:replace="fragments/imports :: imports">&nbsp;</script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>
+            Livro - Inclusão/Edição
+        </h2>
+    </div>
+    <div class="panel-body">
+        <form action="#" data-th-action="@{/livro/save}" data-th-object="${livro}" method="post">
+            <div class="col-md-6">
+                <input type="hidden" data-th-value="*{id}" data-th-field="*{id}"/>
+                <div class="form-group">
+                    <label>Titulo</label>
+                    <input required="required" type="text" class="form-control" data-th-value="*{titulo}" data-th-field="*{titulo}"/>
+                </div>
+                <div class="form-group">
+                    <label>ISBN</label>
+                    <input required="required" type="text" class="form-control" data-th-value="*{isbn}" data-th-field="*{isbn}"/>
+                </div>
+                 <div class="form-group">
+                    <label>Autor</label>
+                    <select class="form-control" th:field="*{autor.id}">
+                        <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nome}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Editora</label>
+                    <select class="form-control" th:field="*{editora.id}">
+                        <option th:each="editora : ${editoras}" th:value="${editora.id}" th:text="${editora.nome}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div th:replace="fragments/footer :: footer">&nbsp;</div>
+</div>
+</body>
+</html>

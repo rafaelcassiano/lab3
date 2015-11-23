@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: lab3-server
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: rafae_000
+Implementation-Vendor-Id: br.gov.sp.fatec
+Build-Jdk: 1.8.0_60
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
