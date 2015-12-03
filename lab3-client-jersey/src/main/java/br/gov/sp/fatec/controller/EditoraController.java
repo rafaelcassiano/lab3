@@ -38,7 +38,7 @@ public class EditoraController {
 	}
 
 	@RequestMapping(value = "/save")
-	public ModelAndView edit(@ModelAttribute EditoraDto editora) {
+	public ModelAndView save(@ModelAttribute EditoraDto editora) {
 		service.save(editora);
 		return new ModelAndView("redirect:/editora");
 	}

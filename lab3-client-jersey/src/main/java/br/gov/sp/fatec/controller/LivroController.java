@@ -48,7 +48,7 @@ public class LivroController {
 	}
 
 	@RequestMapping(value = "/save")
-	public ModelAndView edit(@ModelAttribute LivroDto livro) {
+	public ModelAndView save(@ModelAttribute LivroDto livro) {
 		service.save(livro);
 		return new ModelAndView("redirect:/livro");
 	}

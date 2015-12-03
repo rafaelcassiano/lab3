@@ -38,7 +38,7 @@ public class AutorController {
 	}
 
 	@RequestMapping(value = "/save")
-	public ModelAndView edit(@ModelAttribute AutorDto autor) {
+	public ModelAndView save(@ModelAttribute AutorDto autor) {
 		service.save(autor);
 		return new ModelAndView("redirect:/autor");
 	}
